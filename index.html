@@ -59,7 +59,7 @@
     <div id="unity-progress-bar">
     </div>
   </div>
-  <script src="Build/test.loader.js"></script>
+  <script src="Build/nbp-build-vk.loader.js"></script>
   <script>
     const maxPixelRatioMobile = 2.0;
     const maxPixelRatioDesktop = 1.5;
@@ -69,11 +69,11 @@
     var pixelRatio = Math.min(window.devicePixelRatio, maxDevicePixelRatio);
 
     var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/test.loader.js";
+    var loaderUrl = buildUrl + "/nbp-build-vk.loader.js";
     var config = {
-      dataUrl: buildUrl + "/test.data.unityweb",
-      frameworkUrl: buildUrl + "/test.framework.js.unityweb",
-      codeUrl: buildUrl + "/test.wasm.unityweb",
+      dataUrl: buildUrl + "/nbp-build-vk.data.unityweb",
+      frameworkUrl: buildUrl + "/nbp-build-vk.framework.js.unityweb",
+      codeUrl: buildUrl + "/nbp-build-vk.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "HappyCat",
       productName: "Neon Block Puzzle",
@@ -152,7 +152,6 @@
         bridge.send("VKWebAppStorageGet", {"keys": [key]});
         bridge.subscribe((e) => {
           if(e.detail.type == 'VKWebAppStorageGetResult') {
-            console.log(e.detail.data.keys[0].value);
             ss.SendMessage('VkBridge', 'StorageGetResult', e.detail.data.keys[0].value);
             ShowBannerAd();
           }
