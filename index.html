@@ -152,6 +152,7 @@
         bridge.send("VKWebAppStorageGet", {"keys": [key]});
         bridge.subscribe((e) => {
           if(e.detail.type == 'VKWebAppStorageGetResult') {
+            console.log(e.detail.data.keys[0].value);
             ss.SendMessage('VkBridge', 'StorageGetResult', e.detail.data.keys[0].value);
             ShowBannerAd();
           }
